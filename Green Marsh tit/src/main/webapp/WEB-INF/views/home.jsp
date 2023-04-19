@@ -5,8 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<!-- https://cobook.tistory.com/31사이트 들어가서 보자 -->
-<link href= "resources/LoginPage.css"rel="stylesheet" type="text/css" />
+<link href= "/resources/css/LoginPage.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
  <div class="login">

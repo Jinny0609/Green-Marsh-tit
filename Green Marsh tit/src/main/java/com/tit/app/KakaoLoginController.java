@@ -27,7 +27,7 @@ import com.tit.service.KakaoLoginService;
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String login () {
-		return "/login";
+		return "/home";
 	}
 
 	}
