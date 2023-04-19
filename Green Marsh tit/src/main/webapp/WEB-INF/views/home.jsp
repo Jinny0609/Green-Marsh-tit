@@ -30,7 +30,7 @@
 				<div class="social-icons">
 				    <a onclick="location.href='http://localhost:8080/login'"><img src="resources/img/naver.png" class="social-icon"></a>
 				    <a href="#"><img src= "resources/img/google.png"class="social-icon"></a>
-				    <a href="#"><img src= "resources/img/kakao.png" class="social-icon"></a>
+				    <a href="https://kauth.kakao.com/oauth/authorize?client_id=bb6fa36306e975c901f7c29c94043b31&redirect_uri=http://localhost:8080/oauth/kakao&response_type=code"><img src= "resources/img/kakao.png" class="social-icon"></a>
 				</div>
 				
 				<div class="group">
