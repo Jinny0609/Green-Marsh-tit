@@ -11,7 +11,7 @@
 <h1>
 	구글로그인 테스트
 </h1>
-	
 	<div class="g-signin2" data-onsuccess="onSignIn"></div>
+	loginpage test
 </body>
 </html>
