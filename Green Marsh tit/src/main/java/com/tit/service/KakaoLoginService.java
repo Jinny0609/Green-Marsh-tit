@@ -1,5 +1,6 @@
 package com.tit.service;
 
+import java.io.IOException;
 import java.util.Map;
 
 import org.springframework.http.HttpEntity;
@@ -12,10 +13,15 @@ import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 
+import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
+import com.tit.model.LoginVO;
 
 	@Service
 	public class KakaoLoginService {
+
+		// 토큰키를 가져오기위한 인증키 가져오기
 	    public String getAccessToken(String code) {
 	        try {
 	            // HttpHeaders 생성(MIME 종류)
@@ -53,28 +59,41 @@ import com.google.gson.Gson;
 	        }
 	    }
 	 
-	    public String getUserInfo(String accessToken) {
-	    	// HttpHeaders 생성(MIME 종류)
-	        HttpHeaders header = new HttpHeaders();
-	        header.add("Authorization", "Bearer " + accessToken);
-	        header.add("Content-type", "application/x-www-form-urlencoded;charset=utf-8");
+	     // 토큰키로 회원정보 받아오기
+	    public LoginVO getUserInfo(String accessToken) {
+	        // HttpHeaders 생성(MIME 종류)
+	        HttpHeaders headers = new HttpHeaders();
+	        headers.add("Authorization", "Bearer " + accessToken);
+	        headers.add("Content-type", "application/x-www-form-urlencoded;charset=utf-8");
 	        
 	        // HttpHeader와 HttpBody를 하나의 객체에 담기 (body 정보는 생략 가능)
-	        HttpEntity<MultiValueMap<String,String>> requestEntity =
-	        new HttpEntity<>(header);
+	        HttpEntity<MultiValueMap<String, String>> requestEntity = new HttpEntity<>(headers);
 	        
 	        // RestTemplate을 이용하면 브라우저 없이 HTTP 요청을 처리할 수 있다.
 	        RestTemplate restTemplate = new RestTemplate();
 	        
 	        // HTTP 요청을 POST(GET) 방식으로 실행 -> 문자열로 응답이 들어온다.
-	        ResponseEntity<String>  responseEntity = restTemplate.exchange(
-	        		"https://kapi.kakao.com/v2/user/me",
-	        		HttpMethod.POST,
-	        		requestEntity,
-	        		String.class
-	        		);
+	        ResponseEntity<String> responseEntity = restTemplate.exchange(
+	            "https://kapi.kakao.com/v2/user/me",
+	            HttpMethod.POST,
+	            requestEntity,
+	            String.class
+	        );
 	        
 	        // 카카오 인증 서버가 반환한 사용자 정보
-	        return responseEntity.getBody();
+	        String response = responseEntity.getBody();
+	        
+	        // JSON 형식의 문자열을 Java 객체로 변환
+	        ObjectMapper objectMapper = new ObjectMapper();
+	        objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+	        LoginVO loginVO = null;
+	        try {
+	            loginVO = objectMapper.readValue(response, LoginVO.class);
+	        } catch (IOException e) {
+	            e.printStackTrace();
 	        }
+	        
+	        // 변환된 모델 객체 반환
+	        return loginVO;
+	    }
 	}
