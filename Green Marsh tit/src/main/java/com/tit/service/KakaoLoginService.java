@@ -42,7 +42,8 @@ import com.tit.model.LoginVO;
 	            RestTemplate restTemplate = new RestTemplate();
 
 	            // HTTP 요청 및 응답받기
-	            ResponseEntity<String> responseEntity = restTemplate.exchange("https://kauth.kakao.com/oauth/token",HttpMethod.POST,requestEntity,String.class);// 액세스 토큰 요청주소,요청 방식,요청 헤더와 바디,응답받을 타입
+	            // 액세스 토큰 요청주소,요청 방식,요청 헤더와 바디,응답받을 타입
+	            ResponseEntity<String> responseEntity = restTemplate.exchange("https://kauth.kakao.com/oauth/token",HttpMethod.POST,requestEntity,String.class);
 	            // HTTP 응답 본문(body)정보 반환
 	            String jsonData = responseEntity.getBody();
 	            
