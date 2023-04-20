@@ -24,6 +24,7 @@ import com.tit.service.KakaoLoginService;
 			// 응답을 콘솔과 브라우저에서 출력한다
 			LoginVO loginVO = kakaoLoginService.getUserInfo(accessToken);
 			model.addAttribute("loginVO", loginVO);
+			System.out.println(loginVO);
 			
 			// home.jsp 페이지로 이동한다.
 			return "redirect:/home";

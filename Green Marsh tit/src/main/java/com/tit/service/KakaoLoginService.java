@@ -82,6 +82,7 @@ import com.tit.model.LoginVO;
 	        
 	        // 카카오 인증 서버가 반환한 사용자 정보
 	        String response = responseEntity.getBody();
+	        System.out.println(response);
 	        
 	        // JSON 형식의 문자열을 Java 객체로 변환
 	        ObjectMapper objectMapper = new ObjectMapper();
@@ -89,6 +90,13 @@ import com.tit.model.LoginVO;
 	        LoginVO loginVO = null;
 	        try {
 	            loginVO = objectMapper.readValue(response, LoginVO.class);
+	            if (loginVO.getProperties() != null) {
+	                loginVO.setId(loginVO.getId());
+	                loginVO.setNickname(loginVO.getProperties().getNickname());
+	            }
+	            if (loginVO. getKakao_account() != null) {
+	                loginVO.setEmail(loginVO. getKakao_account().getEmail());
+	            }
 	        } catch (IOException e) {
 	            e.printStackTrace();
 	        }
