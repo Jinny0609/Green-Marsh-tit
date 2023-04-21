@@ -1,12 +1,14 @@
 package com.tit.app;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.tit.mapper.KakaoMapper;
 import com.tit.model.LoginVO;
 import com.tit.service.KakaoLoginService;
 import com.tit.service.KakaoLogintoService;
@@ -20,18 +22,31 @@ import com.tit.service.KakaoLogintoService;
 		@Autowired
 		private KakaoLogintoService kls;
 		
+		@Autowired
+	    private KakaoMapper kakaoMapper;
+		
 		@GetMapping("/oauth/kakao")
-		public String kakaCallback(String code, Model model) {
+		public String kakaCallback(String code, HttpSession session) {
 			// 인증 서버로 부터 받은 CODE를 이용하여 액세스 토큰을 요청한다.
 			String accessToken = kakaoLoginService.getAccessToken(code);
 			// 응답을 콘솔과 브라우저에서 출력한다
 			LoginVO loginVO = kakaoLoginService.getUserInfo(accessToken);
-			model.addAttribute("loginVO", loginVO);
-			System.out.println(loginVO);
-			kls.kakaologin(loginVO);
+			
+			// email 값을 조회하여 이미 존재하는 경우 로그인 처리, 그렇지 않으면 회원가입 처리
+	        int count = kakaoMapper.checkEmail(loginVO.getEmail());
+	        if (count > 0) {
+	            // 이미 등록된 이메일인 경우 로그인 처리
+	            // TODO: 로그인 처리 코드 작성
+	        	session.setAttribute("usernickname", loginVO.getNickname());
+				session.setAttribute("accessToken", accessToken);
+				System.out.println(loginVO);
+	            return "redirect:/MainPage";
+	        } else {
+	            // 새로운 이메일인 경우 회원가입 처리
+	            kls.kakaologin(loginVO);
+	            return "redirect:/MainPage";
+	        }
 	
-			// home.jsp 페이지로 이동한다.
-			return "redirect:/MainPage";
 		}
 
 
@@ -44,5 +59,22 @@ import com.tit.service.KakaoLogintoService;
 	public String mainhome () {
 		return "/MainPage";
 	}
+	
+	  @RequestMapping(value="/logout")
+	    public String logout(HttpSession session) {
+	        String accessToken = (String)session.getAttribute("accessToken");
+
+	        if(accessToken != null && !"".equals(accessToken)){
+	        	kakaoLoginService.kakaologout(accessToken);
+	            session.removeAttribute("accessToken");
+	            session.removeAttribute("usernickname");
+	        }else{
+	            System.out.println("access_Token is null");
+	            //return "redirect:/";
+	        }
+	        //return "index";
+	        return "redirect:/";
+	    }
+	
 
 	}
