@@ -82,7 +82,7 @@ public class KakaoLoginService {
 		String response = responseEntity.getBody();
 		System.out.println(response);
 
-		// JSON 형식의 문자열을 Java 객체로 변환
+		// JSON 형식의 문자열을 Java 객체로 변환 (Jackson 라이브러리의 ObjectMapper 클래스)
 		ObjectMapper objectMapper = new ObjectMapper();
 		objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
 		LoginVO loginVO = null;
@@ -118,6 +118,33 @@ public class KakaoLoginService {
 
 			// HTTP 요청을 POST 방식으로 실행 -> 문자열로 응답이 들어온다.
 			ResponseEntity<String> responseEntity = restTemplate.exchange("https://kapi.kakao.com/v1/user/logout",
+					HttpMethod.POST, requestEntity, String.class);
+
+			// HTTP 응답 본문(body)정보 반환
+			String response = responseEntity.getBody();
+			System.out.println(response);
+
+		} catch (RestClientException e) {
+			// HTTP 요청 및 응답 처리 중 발생할 수 있는 예외 처리
+			e.printStackTrace();
+		}
+	}
+	
+	// 회원가입 처리(동의화면 다시 뛰우기,토큰만료)
+	public void kakaoremove(String accessToken) {
+		try {
+			// HttpHeaders 생성(MIME 종류)
+			HttpHeaders headers = new HttpHeaders();
+			headers.add("Authorization", "Bearer " + accessToken);
+
+			// HttpHeader와 HttpBody를 하나의 객체에 담기 (body 정보는 생략 가능)
+			HttpEntity<?> requestEntity = new HttpEntity<>(headers);
+
+			// RestTemplate을 이용하면 브라우저 없이 HTTP 요청을 처리할 수 있다.
+			RestTemplate restTemplate = new RestTemplate();
+
+			// HTTP 요청을 POST 방식으로 실행 -> 문자열로 응답이 들어온다.
+			ResponseEntity<String> responseEntity = restTemplate.exchange("https://kapi.kakao.com/v1/user/unlink",
 					HttpMethod.POST, requestEntity, String.class);
 
 			// HTTP 응답 본문(body)정보 반환

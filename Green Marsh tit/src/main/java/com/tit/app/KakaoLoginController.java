@@ -25,6 +25,7 @@ import com.tit.service.KakaoLogintoService;
 		@Autowired
 	    private KakaoMapper kakaoMapper;
 		
+		// 인증키&토큰키&로그인처리
 		@GetMapping("/oauth/kakao")
 		public String kakaCallback(String code, HttpSession session) {
 			// 인증 서버로 부터 받은 CODE를 이용하여 액세스 토큰을 요청한다.
@@ -36,7 +37,7 @@ import com.tit.service.KakaoLogintoService;
 	        int count = kakaoMapper.checkEmail(loginVO.getEmail());
 	        if (count > 0) {
 	            // 이미 등록된 이메일인 경우 로그인 처리
-	            // TODO: 로그인 처리 코드 작성
+	            // 로그인 처리 코드 작성
 	        	session.setAttribute("usernickname", loginVO.getNickname());
 				session.setAttribute("accessToken", accessToken);
 				System.out.println(loginVO);
@@ -44,7 +45,7 @@ import com.tit.service.KakaoLogintoService;
 	        } else {
 	            // 새로운 이메일인 경우 회원가입 처리
 	            kls.kakaologin(loginVO);
-	            return "redirect:/MainPage";
+	            return "redirect:/";
 	        }
 	
 		}
@@ -60,14 +61,14 @@ import com.tit.service.KakaoLogintoService;
 		return "/MainPage";
 	}
 	
+	// 로그아웃 메소드
 	  @RequestMapping(value="/logout")
 	    public String logout(HttpSession session) {
 	        String accessToken = (String)session.getAttribute("accessToken");
 
 	        if(accessToken != null && !"".equals(accessToken)){
 	        	kakaoLoginService.kakaologout(accessToken);
-	            session.removeAttribute("accessToken");
-	            session.removeAttribute("usernickname");
+	        	session.invalidate();
 	        }else{
 	            System.out.println("access_Token is null");
 	            //return "redirect:/";
@@ -76,5 +77,21 @@ import com.tit.service.KakaoLogintoService;
 	        return "redirect:/";
 	    }
 	
+	  
+	  // 회원탈퇴 메소드
+	  @RequestMapping(value="/remove")
+	    public String remove(HttpSession session) {
+	        String accessToken = (String)session.getAttribute("accessToken");
+
+	        if(accessToken != null && !"".equals(accessToken)){
+	        	kakaoLoginService.kakaoremove(accessToken);
+	        	session.invalidate();
+	        }else{
+	            System.out.println("access_Token is null");
+	            //return "redirect:/";
+	        }
+	        //return "index";
+	        return "redirect:/";
+	    }
 
 	}

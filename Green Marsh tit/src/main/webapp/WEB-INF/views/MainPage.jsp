@@ -12,5 +12,6 @@
 <body>
 <p><%= session.getAttribute("usernickname") %>님 환영합니다.</p>
 <input type="button" value="로그아웃" onclick="location.href='/logout'">
+<input type="button" value="회원탈퇴" onclick="location.href='/remove'">
 </body>
 </html>
