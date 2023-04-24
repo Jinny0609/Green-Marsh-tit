@@ -273,6 +273,63 @@
 			<version>1.18.26</version>
 			<scope>provided</scope>
 		</dependency>
+		
+		<!-- http client(구글) Hojun : insert -->
+		<dependency>
+		  <groupId>com.google.api-client</groupId>
+		  <artifactId>google-api-client</artifactId>
+		  <version>1.31.3</version>
+		</dependency>
+		
+		<!--  spring-security-oauth2-client / Hojun : insert -->
+		<!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-oauth2-client -->
+		<dependency>
+		    <groupId>org.springframework.security</groupId>
+		    <artifactId>spring-security-oauth2-client</artifactId>
+		    <version>5.7.5</version>
+		</dependency>
+		<!--  spring-security-oauth2-client / Hojun-->
+		
+		<!--  spring-security-oauth2-jose / Hojun : insert-->
+		<!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-oauth2-jose -->
+		<dependency>
+		    <groupId>org.springframework.security</groupId>
+		    <artifactId>spring-security-oauth2-jose</artifactId>
+		    <version>5.7.5</version>
+		</dependency>
+		<!--  spring-security-oauth2-jose / Hojun : insert-->
+
+		<!--  spring-security-config / Hojun : insert (오전 10:37 2023-04-21) -->				
+		<!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-config -->
+		<dependency>
+		    <groupId>org.springframework.security</groupId>
+		    <artifactId>spring-security-config</artifactId>
+		    <version>5.7.5</version>
+		</dependency>
+		
+		<!-- spring-security-oauth2-core / Hojun : insert (오후 3:24 2023-04-21) -->
+		<!-- OAuth2AuthenticationProvider 떄문에 추가함  -->
+		<!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-oauth2-core -->
+		<dependency>
+		    <groupId>org.springframework.security</groupId>
+		    <artifactId>spring-security-oauth2-core</artifactId>
+		    <version>5.7.5</version>
+		</dependency>
+		
+		<!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-oauth2-resource-server -->
+		<!-- spring-security-oauth2-resource-server / Hojun : insert (오후 4:17 2023-04-21) -->
+		<dependency>
+		    <groupId>org.springframework.security</groupId>
+		    <artifactId>spring-security-oauth2-resource-server</artifactId>
+		    <version>5.7.5</version>
+		</dependency>
+		
+		<!-- google api client  / Hojun : insert -->
+		<dependency>
+		  <groupId>com.google.api-client</groupId>
+		  <artifactId>google-api-client</artifactId>
+		  <version>1.31.2</version>
+		</dependency>
 
 
 	</dependencies>

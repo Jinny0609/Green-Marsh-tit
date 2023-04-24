@@ -30,4 +30,13 @@
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
 
+	<!-- OAuth2 클라이언트 ID와 클라이언트 시크릿을 저장할 초기화 파라미터 / hojun 2023.04.20 insert -->
+	<context-param>
+	    <param-name>google.clientId</param-name>
+	    <param-value>22641404320-61a62g9r725i4erqeqrnlhetivm8s95m.apps.googleusercontent.com</param-value>
+	</context-param>
+	<context-param>
+	    <param-name>google.clientSecret</param-name>
+	    <param-value>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</param-value>
+	</context-param>
 </web-app>

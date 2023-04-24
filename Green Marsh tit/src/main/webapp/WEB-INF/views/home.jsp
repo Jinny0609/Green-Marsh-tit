@@ -29,7 +29,8 @@
 				
 				<div class="social-icons">
 				    <a onclick="location.href='http://localhost:8080/login'"><img src="resources/img/naver.png" class="social-icon"></a>
-				    <a href="#"><img src= "resources/img/google.png"class="social-icon"></a>
+				    <a href="https://accounts.google.com/o/oauth2/v2/auth?scope=https%3A//www.googleapis.com/auth/drive.metadata.readonly&access_type=offline&include_granted_scopes=true&response_type=code&state=state_parameter_passthrough_value&redirect_uri=http://localhost:8080/login/oauth2/code/google&client_id=22641404320-61a62g9r725i4erqeqrnlhetivm8s95m.apps.googleusercontent.com">
+ 					<img src="resources/img/google.png" class="social-icon"></a>
 				    <a href="https://kauth.kakao.com/oauth/authorize?client_id=bb6fa36306e975c901f7c29c94043b31&redirect_uri=http://localhost:8080/oauth/kakao&response_type=code"><img src= "resources/img/kakao.png" class="social-icon"></a>
 				</div>
 				
