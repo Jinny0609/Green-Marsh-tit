@@ -26,7 +26,7 @@
 					<input id="check" type="checkbox" class="check" checked>
 					<label for="check"><span class="icon"></span>로그인정보 기억하기</label>
 				</div>
-				
+				 
 				<div class="social-icons">
 				    <a onclick="location.href='http://localhost:8080/login'"><img src="resources/img/naver.png" class="social-icon"></a>
 				    <a href="https://accounts.google.com/o/oauth2/v2/auth?scope=https%3A//www.googleapis.com/auth/drive.metadata.readonly&access_type=offline&include_granted_scopes=true&response_type=code&state=state_parameter_passthrough_value&redirect_uri=http://localhost:8080/login/oauth2/code/google&client_id=22641404320-61a62g9r725i4erqeqrnlhetivm8s95m.apps.googleusercontent.com">

@@ -44,7 +44,8 @@ public class GoogleLoginController {
 	@GetMapping("/login/oauth2/code/google")
 	public String googleCallback(SecurityConfig configure) {
 		System.out.println("토큰키값 반환하기");
-		return "/home";
+		return "/home"; 
+		
 	}
 	
 	

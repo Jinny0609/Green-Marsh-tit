@@ -56,7 +56,7 @@ public class SecurityConfig implements WebSecurityConfigurer<WebSecurity> {
     @Bean
     public ClientRegistrationRepository clientRegistrationRepository() {
         return new InMemoryClientRegistrationRepository(this.googleClientRegistration());
-    }
+    } 
     
     // googleClientRegistration() 메서드는 lientRegistration 인터페이스를 구현한 객체를 반환합니다. Google OAuth2 인증 정보를 설정하고 있습니다.
     private ClientRegistration googleClientRegistration() {

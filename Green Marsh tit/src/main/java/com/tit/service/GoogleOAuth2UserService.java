@@ -27,7 +27,7 @@ public class GoogleOAuth2UserService implements OAuth2UserService<OAuth2UserRequ
 	}
 
 	public static Object googleOauth2User() {
-		return null;
+		return null; 
 	}
 
     // loadUser() 메서드에서는 DefaultOAuth2User 객체를 생성하고, 이를 반환합니다. 이때 SimpleGrantedAuthority 객체를 이용하여 ROLE_USER 권한을 부여하고, 
