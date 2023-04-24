@@ -130,7 +130,7 @@ public class KakaoLoginService {
 		}
 	}
 	
-	// 회원가입 처리(동의화면 다시 뛰우기,토큰만료)
+	// 회원탈퇴 처리(동의화면 다시 뛰우기,토큰만료)
 	public void kakaoremove(String accessToken) {
 		try {
 			// HttpHeaders 생성(MIME 종류)

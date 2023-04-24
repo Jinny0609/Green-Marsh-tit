@@ -8,8 +8,8 @@
 
 	<insert id="kakaologin" parameterType="com.tit.model.LoginVO">
 		insert into member
-		(id,email,nickname)
-		values(#{id},#{email},#{nickname});
+		(id,email,nickname,sns)
+		values(#{id},#{email},#{nickname},#{sns});
 	</insert>
 
 

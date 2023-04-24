@@ -44,6 +44,7 @@ import com.tit.service.KakaoLogintoService;
 	            return "redirect:/MainPage";
 	        } else {
 	            // 새로운 이메일인 경우 회원가입 처리
+	        	loginVO.setSns("kakao");
 	            kls.kakaologin(loginVO);
 	            return "redirect:/";
 	        }
@@ -62,20 +63,20 @@ import com.tit.service.KakaoLogintoService;
 	}
 	
 	// 로그아웃 메소드
-	  @RequestMapping(value="/logout")
-	    public String logout(HttpSession session) {
-	        String accessToken = (String)session.getAttribute("accessToken");
-
+	@RequestMapping(value="/logout")
+	public String logout(HttpSession session) {
+	    String accessToken = (String)session.getAttribute("accessToken");
+	    LoginVO loginInfo = (LoginVO)session.getAttribute("loginInfo");
+	    
+	    if(loginInfo != null && "kakao".equals(loginInfo.getSns())){
 	        if(accessToken != null && !"".equals(accessToken)){
-	        	kakaoLoginService.kakaologout(accessToken);
-	        	session.invalidate();
-	        }else{
-	            System.out.println("access_Token is null");
-	            //return "redirect:/";
+	            kakaoLoginService.kakaologout(accessToken);
 	        }
-	        //return "index";
-	        return "redirect:/";
 	    }
+
+	    session.invalidate();
+	    return "redirect:/";
+	}
 	
 	  
 	  // 회원탈퇴 메소드
