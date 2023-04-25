@@ -3,9 +3,9 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>com.tit</groupId>
-	<artifactId>app</artifactId>
-	<name>Green Marsh tit</name>
+	<groupId>com.blog</groupId>
+	<artifactId>controller</artifactId>
+	<name>MyBlog</name>
 	<packaging>war</packaging>
 	<version>1.0.0-BUILD-SNAPSHOT</version>
 	<properties>
@@ -273,84 +273,7 @@
 			<version>1.18.26</version>
 			<scope>provided</scope>
 		</dependency>
-		
-		<!-- http client(구글) Hojun : insert -->
-		<dependency>
-		  <groupId>com.google.api-client</groupId>
-		  <artifactId>google-api-client</artifactId>
-		  <version>1.31.3</version>
-		</dependency>
-		
-		<!--  spring-security-oauth2-client / Hojun : insert -->
-		<!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-oauth2-client -->
-		<dependency>
-		    <groupId>org.springframework.security</groupId>
-		    <artifactId>spring-security-oauth2-client</artifactId>
-		    <version>5.7.5</version>
-		</dependency>
-		<!--  spring-security-oauth2-client / Hojun-->
-		
-		<!--  spring-security-oauth2-jose / Hojun : insert-->
-		<!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-oauth2-jose -->
-		<dependency>
-		    <groupId>org.springframework.security</groupId>
-		    <artifactId>spring-security-oauth2-jose</artifactId>
-		    <version>5.7.5</version>
-		</dependency>
-		<!--  spring-security-oauth2-jose / Hojun : insert-->
 
-		<!--  spring-security-config / Hojun : insert (오전 10:37 2023-04-21) -->				
-		<!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-config -->
-		<dependency>
-		    <groupId>org.springframework.security</groupId>
-		    <artifactId>spring-security-config</artifactId>
-		    <version>5.7.5</version>
-		</dependency>
-		
-		<!-- spring-security-oauth2-core / Hojun : insert (오후 3:24 2023-04-21) -->
-		<!-- OAuth2AuthenticationProvider 떄문에 추가함  -->
-		<!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-oauth2-core -->
-		<dependency>
-		    <groupId>org.springframework.security</groupId>
-		    <artifactId>spring-security-oauth2-core</artifactId>
-		    <version>5.7.5</version>
-		</dependency>
-		
-		<!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-oauth2-resource-server -->
-		<!-- spring-security-oauth2-resource-server / Hojun : insert (오후 4:17 2023-04-21) -->
-		<dependency>
-		    <groupId>org.springframework.security</groupId>
-		    <artifactId>spring-security-oauth2-resource-server</artifactId>
-		    <version>5.7.5</version>
-		</dependency>
-		
-		<!-- google api client  / Hojun : insert -->
-		<dependency>
-		  <groupId>com.google.api-client</groupId>
-		  <artifactId>google-api-client</artifactId>
-		  <version>1.31.2</version>
-		</dependency>
-		
-		
-		<!-- naver Gyu-Sun insert-->
-		<dependency>
-			<groupId>com.github.scribejava</groupId>
-			<artifactId>scribejava-core</artifactId>
-			<version>2.8.1</version>
-		</dependency>
-		<!-- 제이슨 파싱 -->
-		<dependency>
-		    <groupId>com.googlecode.json-simple</groupId>
-		    <artifactId>json-simple</artifactId>
-		    <version>1.1.1</version>
-		</dependency>
-		
-		<!-- jstl -->
-		<dependency>
-			<groupId>javax.servlet</groupId>
-			<artifactId>jstl</artifactId>
-			<version>1.2</version>
-		</dependency>
 
 	</dependencies>
 	<build>

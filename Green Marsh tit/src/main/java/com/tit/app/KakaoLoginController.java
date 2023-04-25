@@ -52,10 +52,10 @@ import com.tit.service.KakaoLogintoService;
 		}
 
 
-	@RequestMapping(value = "/", method = RequestMethod.GET)
+	/*@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String login () {
 		return "/home";
-	}
+	}*/
 	
 	@RequestMapping(value = "/MainPage", method = RequestMethod.GET)
 	public String mainhome () {
