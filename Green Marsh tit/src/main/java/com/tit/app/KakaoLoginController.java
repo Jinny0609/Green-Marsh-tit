@@ -40,23 +40,24 @@ import com.tit.service.KakaoLogintoService;
 	            // 로그인 처리 코드 작성
 	        	session.setAttribute("usernickname", loginVO.getNickname());
 				session.setAttribute("accessToken", accessToken);
+				session.setAttribute("loginVO", loginVO);
+				loginVO.setSns("kakao"); // loginVO sns "kakao"값을 넣어라
 				System.out.println(loginVO);
 	            return "redirect:/MainPage";
 	        } else {
 	            // 새로운 이메일인 경우 회원가입 처리
-	        	loginVO.setSns("kakao");
-	            kls.kakaologin(loginVO);
+	            kls.kakaologin(loginVO); //DB에 회원 정보를 저장 loginVO모델에 담아서 전달
 	            return "redirect:/";
 	        }
 	
 		}
 
 
-	/*@RequestMapping(value = "/", method = RequestMethod.GET)
+/*	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String login () {
 		return "/home";
-	}*/
-	
+	}
+	*/
 	@RequestMapping(value = "/MainPage", method = RequestMethod.GET)
 	public String mainhome () {
 		return "/MainPage";
@@ -68,7 +69,7 @@ import com.tit.service.KakaoLogintoService;
 	    String accessToken = (String)session.getAttribute("accessToken");
 	    LoginVO loginInfo = (LoginVO)session.getAttribute("loginInfo");
 	    
-	    if(loginInfo != null && "kakao".equals(loginInfo.getSns())){
+	    if(loginInfo != null && "kakao".equals(loginInfo.getSns())){ // sns 속성 비교
 	        if(accessToken != null && !"".equals(accessToken)){
 	            kakaoLoginService.kakaologout(accessToken);
 	        }

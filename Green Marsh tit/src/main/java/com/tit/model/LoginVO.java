@@ -58,6 +58,6 @@ public class LoginVO {
 
 	@Override
 	public String toString() {
-		return "KakaoUserInfoVO [id=" + id + ", email=" + email + ", nickname=" + nickname + "]";
+		return "KakaoUserInfoVO [id=" + id + ", email=" + email + ", nickname=" + nickname + ", sns=" + sns + "]";
 	}
 }
