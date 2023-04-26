@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.tit.mapper.KakaoMapper">
+<mapper namespace="com.tit.mapper.NaverMapper">
 
-	<insert id="kakaologin" parameterType="com.tit.model.LoginVO">
+	<insert id="naverlogin" parameterType="com.tit.model.NaverVO">
 		insert into member
 		(id,email,nickname,sns)
-		values(#{id},#{email},#{nickname},"kakao");
+		values(#{id},#{email},#{nickname},"naver");
 	</insert>
 
 
 	<select id="checkEmail" parameterType="string" resultType="int">
 		SELECT COUNT(*) FROM member WHERE email=#{email}
 	</select>
+	
 
 </mapper>

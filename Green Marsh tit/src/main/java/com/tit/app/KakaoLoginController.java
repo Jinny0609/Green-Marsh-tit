@@ -47,6 +47,7 @@ import com.tit.service.KakaoLogintoService;
 	        } else {
 	            // 새로운 이메일인 경우 회원가입 처리
 	            kls.kakaologin(loginVO); //DB에 회원 정보를 저장 loginVO모델에 담아서 전달
+	            loginVO.setSns("kakao");
 	            return "redirect:/";
 	        }
 	

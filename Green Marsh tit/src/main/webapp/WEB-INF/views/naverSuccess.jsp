@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ page import="com.tit.model.NaverVO"%>
 <!doctype html>
 <html lang="ko">
 <head>
@@ -21,30 +22,28 @@ h3 {
 	padding: 0.6em;
 }
 </style>
-<script type="text/javascript">
-	$(document).ready(function() {
-		var name = ${result}.response.name;
-		var email = ${result}.response.email;
-		$("#name").html("환영합니다. "+name+"님");
-		$("#email").html(email);
-	  });
-</script>
-
 </head>
 <body>
-<header>
-	<h1>Green Marsh Tit Page</h1>
-		<a href="/oauth2/naver/logoutin">회원탈퇴</a>
-		<a href="/oauth2/naver/logout">로그아웃</a>
-</header>
+	<header>
+		<h1>Green Marsh Tit Page</h1>
+		<a href="/oauth2/naver/logoutin">회원탈퇴</a> <a
+			href="/oauth2/naver/logout">로그아웃</a>
+	</header>
 
 	<div
 		style="background-color: #15a181; width: 100%; height: 50px; text-align: center; color: white;">
 		<h3>로그인 성공</h3>
 	</div>
-	
+
 	<br>
-	<h2 style="text-align: center" id="name"></h2>
+<%
+    NaverVO naverVO = (NaverVO) session.getAttribute("naverVO");
+    String name = naverVO != null ? naverVO.getNickname() : "";
+    String email = naverVO != null ? naverVO.getEmail() : "";
+%>
+
+<h2>환영합니다. <%= name %>님</h2>
+<h4><%= email %></h4>
 	<h4 style="text-align: center" id="email"></h4>
 
 </body>

@@ -1,11 +1,21 @@
 package com.tit.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class NaverVO {
 	private String id;
 	private String nickname;
 	private String email;
 	private String sns;
+	private responseVO response;
 	
+	public responseVO getResponse() {
+		return response;
+	}
+	public void setResponse(responseVO response) {
+		this.response = response;
+	}
 	public String getId() {
 		return id;
 	}
@@ -28,7 +38,7 @@ public class NaverVO {
 		return sns;
 	}
 	public void setSns(String sns) {
-		this.sns = sns;
+		this.sns = "naver";
 	}
 	
 	@Override
