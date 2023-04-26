@@ -91,9 +91,11 @@ public class KakaoLoginService {
 			if (loginVO.getProperties() != null) {
 				loginVO.setId(loginVO.getId());
 				loginVO.setNickname(loginVO.getProperties().getNickname());
+				loginVO.setSns("kakao");
 			}
 			if (loginVO.getKakao_account() != null) {
 				loginVO.setEmail(loginVO.getKakao_account().getEmail());
+				loginVO.setSns("kakao");
 			}
 		} catch (IOException e) {
 			e.printStackTrace();

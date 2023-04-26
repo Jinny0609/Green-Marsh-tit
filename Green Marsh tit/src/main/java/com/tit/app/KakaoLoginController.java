@@ -41,14 +41,16 @@ import com.tit.service.KakaoLogintoService;
 	        	session.setAttribute("usernickname", loginVO.getNickname());
 				session.setAttribute("accessToken", accessToken);
 				session.setAttribute("loginVO", loginVO);
-				loginVO.setSns("kakao"); // loginVO sns "kakao"값을 넣어라
 				System.out.println(loginVO);
 	            return "redirect:/MainPage";
 	        } else {
 	            // 새로운 이메일인 경우 회원가입 처리
 	            kls.kakaologin(loginVO); //DB에 회원 정보를 저장 loginVO모델에 담아서 전달
-	            loginVO.setSns("kakao");
-	            return "redirect:/";
+	            session.setAttribute("loginVO", loginVO);
+				String snsid = kakaoMapper.checkSns(loginVO);
+				session.setAttribute("Snsid", snsid);
+				session.setAttribute("usernickname", loginVO.getNickname());
+	            return "redirect:/MemberJoin";
 	        }
 	
 		}

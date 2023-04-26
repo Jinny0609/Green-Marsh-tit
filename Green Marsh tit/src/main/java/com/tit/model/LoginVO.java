@@ -53,7 +53,7 @@ public class LoginVO {
 	}
 
 	public void setSns(String sns) { // column setter 메소드 추가
-		this.sns = sns;
+		this.sns = "kakao";
 	}
 
 	@Override

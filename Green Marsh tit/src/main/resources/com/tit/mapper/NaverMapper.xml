@@ -16,5 +16,9 @@
 		SELECT COUNT(*) FROM member WHERE email=#{email}
 	</select>
 	
+	<select id="checkSns" parameterType="com.tit.model.NaverVO" resultType="string">
+		SELECT sns FROM member WHERE id = #{id};
+	</select>
+	
 
 </mapper>

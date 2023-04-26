@@ -78,6 +78,7 @@ public class NaverController {
 				naverVO.setId(naverVO.getResponse().getId());
 				naverVO.setNickname(naverVO.getResponse().getNickname());
 				naverVO.setEmail(naverVO.getResponse().getEmail());
+				naverVO.setSns("naver");
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -92,6 +93,9 @@ public class NaverController {
 			return "redirect:/naverSuccess";
 		} else { // 회원가입
 			nls.naverlogin(naverVO); // DB로 회원정보 전달
+			session.setAttribute("naverVO", naverVO);
+			String snsid = navermapper.checkSns(naverVO);
+			session.setAttribute("Snsid", snsid);
 			return "redirect:/MemberJoin";
 		}
 
