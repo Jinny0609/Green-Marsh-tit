@@ -83,7 +83,7 @@ public class NaverLoginBO {
 	private String getSession(HttpSession session) {
 		return (String) session.getAttribute(SESSION_STATE);
 	}
-
+	/*삭제*/
 	/* Access Token을 이용하여 네이버 사용자 프로필 API를 호출 */
 	public String getUserProfile(OAuth2AccessToken oauthToken) throws IOException {
 

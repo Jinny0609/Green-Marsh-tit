@@ -15,4 +15,4 @@ public class NaverLoginServiceImpl implements NaverLoginService {
 	public void naverlogin(NaverVO naverVO) {
 		naverMapper.naverlogin(naverVO);
 	}
-}
+}/*삭제*/
