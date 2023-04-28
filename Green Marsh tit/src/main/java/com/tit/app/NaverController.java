@@ -127,4 +127,10 @@ public class NaverController {
 	public String MemberJoin() {
 		return "MemberJoin";
 	}
+	
+	//메인페이지 확인용
+	@RequestMapping(value = "/Medical", method = { RequestMethod.GET, RequestMethod.POST })
+	public String Medical() {
+		return "Medical";
+	}
 }
