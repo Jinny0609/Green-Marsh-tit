@@ -41,8 +41,10 @@ import com.tit.service.KakaoLogintoService;
 	        	session.setAttribute("usernickname", loginVO.getNickname());
 				session.setAttribute("accessToken", accessToken);
 				session.setAttribute("loginVO", loginVO);
+				String snsid = kakaoMapper.checkSns(loginVO);
+				session.setAttribute("Snsid", snsid);
 				System.out.println(loginVO);
-	            return "redirect:/MainPage";
+	            return "redirect:/Medical";
 	        } else {
 	            // 새로운 이메일인 경우 회원가입 처리
 	            kls.kakaologin(loginVO); //DB에 회원 정보를 저장 loginVO모델에 담아서 전달
@@ -61,9 +63,9 @@ import com.tit.service.KakaoLogintoService;
 		return "/home";
 	}
 	*/
-	@RequestMapping(value = "/MainPage", method = RequestMethod.GET)
+	@RequestMapping(value = "/Medical", method = RequestMethod.GET)
 	public String mainhome () {
-		return "/MainPage";
+		return "/Medical";
 	}
 	
 	// 로그아웃 메소드

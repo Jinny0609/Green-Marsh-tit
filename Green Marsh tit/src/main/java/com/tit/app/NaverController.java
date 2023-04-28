@@ -89,8 +89,10 @@ public class NaverController {
 			// 세션에 NaverVO 객체를 저장한다.
 			session.setAttribute("naverVO", naverVO);
 			session.setAttribute("oauthToken", oauthToken);
+			String snsid = navermapper.checkSns(naverVO);
+			session.setAttribute("Snsid", snsid);
 			/* 네이버 로그인 성공 페이지 View 호출 */
-			return "redirect:/naverSuccess";
+			return "redirect:/Medical";
 		} else { // 회원가입
 			nls.naverlogin(naverVO); // DB로 회원정보 전달
 			session.setAttribute("naverVO", naverVO);
@@ -128,9 +130,9 @@ public class NaverController {
 		return "MemberJoin";
 	}
 	
-	//메인페이지 확인용
+	/*//메인페이지 확인용
 	@RequestMapping(value = "/Medical", method = { RequestMethod.GET, RequestMethod.POST })
 	public String Medical() {
 		return "Medical";
-	}
+	}*/
 }
