@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.tit.mapper.MainLoginMapper;
 import com.tit.model.MainLoginVO;
 import com.tit.service.MainLoginService;
 
@@ -19,11 +20,18 @@ public class LoginController {
 	@Autowired
 	private MainLoginService mainloginservice;
 	
+	@Autowired
+	private MainLoginMapper mainmapper;
+	
 	// 회원가입
 	@RequestMapping(value = "/MainMemberJoin", method = RequestMethod.POST)
-	public String memberjoin (MainLoginVO mainloginVO) {
+	public String memberjoin (MainLoginVO mainloginVO, HttpSession session) {
 		mainloginservice.memberjoin(mainloginVO);
-		return "redirect:/";
+		session.setAttribute("mainloginVO", mainloginVO);
+		String snsid = mainmapper.checkSns(mainloginVO);
+		session.setAttribute("Snsid", snsid);
+		session.setAttribute("usernickname", mainloginVO.getNickname());
+		return "redirect:/MemberJoin";
 	}
 	
 	// 로그인

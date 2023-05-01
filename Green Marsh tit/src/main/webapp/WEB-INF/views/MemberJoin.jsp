@@ -32,6 +32,10 @@
 <p style="display:none" class="kakao"><%= session.getAttribute("usernickname") %>님 환영합니다.</p>
 <!-- naver -->
 <p style="display:none" class="naver"><%= name %>님 환영합니다.</p>
+<!-- main -->
+<p style="display:none" class="basic"><%= session.getAttribute("usernickname") %>님 환영합니다.</p>
+<!-- google -->
+<p style="display:none" class="google"><%= session.getAttribute("googleNickname") %>님 환영합니다.</p>
 <!-- <button id="btn" onclick="location.href='/'">로그인페이지로 이동</button> -->
 <!-- naver -->
 <%
@@ -68,13 +72,47 @@ if (snsid != null && "naver".equals(snsid)) {
     });
   });
 </script>
+<%
+  } if (snsid != null && "basic".equals(snsid)) {
+%>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // 로그아웃 버튼 활성화
+    document.querySelector('.basic').style.display = 'block';
 
+    // 로그아웃 버튼 클릭 시
+    document.querySelector('#btn').addEventListener('click', function() {
+      // 네이버 로그아웃 처리할 코드 작성
+      // ...
+      // 로그아웃 버튼 다시 숨기기
+      document.querySelector('.basic').style.display = 'none';
+    });
+  });
+</script>
+<%
+  } if (snsid != null && "google".equals(snsid)) {
+%>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // 로그아웃 버튼 활성화
+    document.querySelector('.google').style.display = 'block';
+
+    // 로그아웃 버튼 클릭 시
+    document.querySelector('#btn').addEventListener('click', function() {
+      // 네이버 로그아웃 처리할 코드 작성
+      // ...
+      // 로그아웃 버튼 다시 숨기기
+      document.querySelector('.google').style.display = 'none';
+    });
+  });
+</script>
 <%
   } else {
 %>
 <script>
   document.querySelector('.naver').style.display = 'none';
   document.querySelector('.kakao').style.display = 'none';
+  document.querySelector('.basic').style.display = 'none';
 </script>
 <%
   }

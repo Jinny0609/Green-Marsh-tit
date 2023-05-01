@@ -41,7 +41,7 @@
 				</ul>
 				<span style="display: none; color: white" class="kakao"><%=session.getAttribute("usernickname")%>님
 				</span> <span style="display: none; color: white" class="naver"><%=name%>님
-				</span> <span style="display: none; color: white" class="google"><%=session.getAttribute("usernickname")%>님
+				</span> <span style="display: none; color: white" class="google"><%=session.getAttribute("googleNickname")%>님
 				</span> <span style="display: none; color: white" class="basic"><%=session.getAttribute("usernickname")%>님
 				</span>
 				<button style="display: none" type="button"
@@ -52,7 +52,8 @@
 					onclick="location.href='/oauth2/naver/logout'">로그아웃</button>
 
 				<button style="display: none" type="button"
-					class="btn btn-light google">로그아웃</button>
+					class="btn btn-light google"
+					onclick="location.href='/oauth2/google/logout'">로그아웃</button>
 
 				<button style="display: none" type="button"
 					onclick="location.href='/MainMemberlogout'"
@@ -66,7 +67,8 @@
 					onclick="location.href='/oauth2/naver/logoutin'">회원탈퇴</button>
 
 				<button style="display: none" type="button"
-					class="btn btn-light google">회원탈퇴</button>
+					class="btn btn-light google"
+					onclick="location.href='/oauth2/google/acount_rm'">회원탈퇴</button>
 
 				<button style="display: none" type="button"
 					class="btn btn-light basic" onclick="location.href='/MainMemberDelete'">회원탈퇴</button>
@@ -233,6 +235,46 @@
 											});
 						}
 		);
+		
+		
+		<%
+		}
+		if (snsid != null && "google".equals(snsid)) {
+			System.out.println("여기까진넘어오냐1");
+	%>
+	<script>
+		
+		document.addEventListener(
+				//console.log("aaaaa")
+						'DOMContentLoaded',
+						function() {
+							//for(var i=0;i<2;i++){
+							/* console.log(document.querySelectorAll('.basic')); */
+							//}
+
+							// 로그아웃 버튼 활성화
+							document.querySelectorAll('.google')[0].style.display = 'inline-block';
+							document.querySelectorAll('.google')[1].style.display = 'inline-block';
+							document.querySelectorAll('.google')[2].style.display = 'inline-block';
+							// 로그아웃 버튼 클릭 시
+							document
+									.querySelector('.google')
+									.addEventListener(
+											'click',
+											function() {
+												// 네이버 로그아웃 처리할 코드 작성
+												// ...
+												// 로그아웃 버튼 다시 숨기기
+												document
+														.querySelectorAll('.google')[0].style.display = 'none';
+												document
+														.querySelectorAll('.google')[1].style.display = 'none';
+												document
+														.querySelectorAll('.google')[2].style.display = 'none';
+											});
+						}
+		);
+		
 	<%
 	} else { 
 	%>
@@ -241,6 +283,7 @@
 		document.querySelector('.naver').style.display = 'none';
 		document.querySelector('.kakao').style.display = 'none';
 		document.querySelector('.basic').style.display = 'none';
+		document.querySelector('.google').style.display = 'none';
 	
 	<%
 		}

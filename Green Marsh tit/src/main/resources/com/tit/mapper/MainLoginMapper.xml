@@ -23,6 +23,10 @@
 	<delete id="memberlogout">
 	delete from member where email=#{email}
 	</delete>
+	
+	<select id="checkSns" parameterType="com.tit.model.MainLoginVO" resultType="string">
+		SELECT sns FROM member WHERE email = #{email};
+	</select>
 
 
 </mapper>

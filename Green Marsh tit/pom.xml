@@ -281,6 +281,14 @@
 		  <version>1.31.3</version>
 		</dependency>
 		
+		<!-- https://mvnrepository.com/artifact/com.google.http-client/google-http-client-jackson2 -->
+		<dependency>
+		    <groupId>com.google.http-client</groupId>
+		    <artifactId>google-http-client-jackson2</artifactId>
+		    <version>1.31.0</version>
+		</dependency>
+				
+		
 		<!--  spring-security-oauth2-client / Hojun : insert -->
 		<!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-oauth2-client -->
 		<dependency>

@@ -9,5 +9,6 @@ public interface MainLoginMapper {
 	public void memberjoin(MainLoginVO mainloginVO);
 	public ArrayList<MainLoginVO> memberlogin(MainLoginVO mainloginVO);
 	public void memberlogout(String email);
+	public String checkSns(MainLoginVO mainloginVO);
 
 }
