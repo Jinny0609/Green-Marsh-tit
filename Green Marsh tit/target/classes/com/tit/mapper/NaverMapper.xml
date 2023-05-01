@@ -20,5 +20,9 @@
 		SELECT sns FROM member WHERE id = #{id};
 	</select>
 	
+	<delete id="naverlogout">
+	delete from member where email=#{email}
+	</delete>
+	
 
 </mapper>

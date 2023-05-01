@@ -15,4 +15,8 @@ public class KakaoLogintoServiceImpl implements KakaoLogintoService {
 	public void kakaologin(LoginVO loginVO) {
 	kmp.kakaologin(loginVO);
 	}
+	
+	public void kakaodelete(LoginVO loginVO) {
+		kmp.kakaodelete(loginVO);
+	}
 }

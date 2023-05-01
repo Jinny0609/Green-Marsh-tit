@@ -7,6 +7,8 @@
 <%@ page import="com.tit.mapper.NaverMapper" %>
 <!DOCTYPE html>
 <html>
+<link href="resources/css/MemberJoin.css" rel="stylesheet" type="text/css" />
+<link href="resources/css/MemberJoin2.css" rel="stylesheet" type="text/css" />
 <head>
 <meta charset="UTF-8">
 <title>회원가입 성공</title>
@@ -19,12 +21,18 @@
     String email = naverVO != null ? naverVO.getEmail() : "";
     String snsid = (String) session.getAttribute("Snsid");
 %>
-
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <div class="container-fluid">
+   		 <a href="MemberJoin.jsp">
+  			<img src="resources/img/logo.png" class="logo" alt="My Logo">
+		</a>
+  </div>
+</nav>
 <!-- kakao -->
 <p style="display:none" class="kakao"><%= session.getAttribute("usernickname") %>님 환영합니다.</p>
 <!-- naver -->
 <p style="display:none" class="naver"><%= name %>님 환영합니다.</p>
-<button id="btn" onclick="location.href='/'">로그인페이지로 이동</button>
+<!-- <button id="btn" onclick="location.href='/'">로그인페이지로 이동</button> -->
 <!-- naver -->
 <%
 if (snsid != null && "naver".equals(snsid)) {
@@ -72,6 +80,11 @@ if (snsid != null && "naver".equals(snsid)) {
   }
 %>
 
-
+<div class="center">
+	<img src="resources/img/쇠박새.png">
+	<div class="buttons">
+   		 <button class="btn-hover color-8" onclick="location.href='/'">로그인페이지로 이동</button>
+	</div>
+</div>
 </body>
 </html>

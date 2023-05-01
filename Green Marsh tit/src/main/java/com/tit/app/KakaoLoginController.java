@@ -91,6 +91,8 @@ import com.tit.service.KakaoLogintoService;
 	        String accessToken = (String)session.getAttribute("accessToken");
 
 	        if(accessToken != null && !"".equals(accessToken)){
+	        	LoginVO loginVO = (LoginVO) session.getAttribute("loginVO");
+	        	kls.kakaodelete(loginVO);
 	        	kakaoLoginService.kakaoremove(accessToken);
 	        	session.invalidate();
 	        }else{

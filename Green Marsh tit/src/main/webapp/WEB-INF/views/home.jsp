@@ -13,14 +13,15 @@
 		<input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">로그인</label>
 		<input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab">회원가입</label>
 		<div class="login-form">
+		<form action="/MainMemberlogin" method="post">
 			<div class="sign-in-htm">
 				<div class="group">
 					<!-- <label for="user" class="label">아이디</label> -->
-					<input id="user" type="text" class="input"placeholder="아이디">
+					<input id="user" type="text" class="input" name="email" placeholder="이메일">
 				</div>
 				<div class="group">
 					<!-- <label for="pass" class="label">패스워드</label> -->
-					<input id="pass" type="password" class="input" data-type="password"placeholder="패스워드">
+					<input id="pass" type="password" class="input" name="password" data-type="password"placeholder="패스워드">
 				</div>
 				<div class="group">
 					<input id="check" type="checkbox" class="check" checked>
@@ -44,10 +45,12 @@
 					<a href="#forgot">비밀번호를 잊으셨습니까?</a>
 				</div>
 			</div>
+			</form>
 			<form action="/MainMemberJoin" method="post">
 			<div class="sign-up-htm">
+			
 				<div class="group">
-					<input id="user" type="text" class="input" name="id" placeholder="아이디">
+					<input id="pass" type="text" class="input" name="email" placeholder="이메일">
 				</div>
 				<div class="group">
 					<input id="pass" type="password" class="input" name="password" data-type="password"placeholder="패스워드">
@@ -55,10 +58,6 @@
 				
 				<div class="group">
 					<input id="name" type="text" class="input" name="nickname" placeholder="닉네임">
-				</div>
-				
-				<div class="group">
-					<input id="pass" type="text" class="input" name="email" placeholder="이메일">
 				</div>
 				
 				<div class="group">

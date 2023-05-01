@@ -24,7 +24,6 @@ public class NaverController {
 	/* NaverLoginBO */
 	private NaverLoginBO naverLoginBO;
 	private String apiResult = null;
-	private String snsId = null;
 
 	@Autowired
 	private void setNaverLoginBO(NaverLoginBO naverLoginBO) {
@@ -107,6 +106,8 @@ public class NaverController {
 	@RequestMapping(value = "/oauth2/naver/logoutin", method = { RequestMethod.GET, RequestMethod.POST })
 	public String logoutin(HttpSession session) throws IOException {
 		OAuth2AccessToken oauthToken = (OAuth2AccessToken) session.getAttribute("oauthToken");
+		NaverVO naverVO = (NaverVO) session.getAttribute("naverVO");
+		nls.naverlogout(naverVO);
 		naverLoginBO.logoutin(oauthToken);
 		session.invalidate();
 		return "redirect:/";

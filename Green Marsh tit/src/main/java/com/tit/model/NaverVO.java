@@ -46,6 +46,6 @@ public class NaverVO {
 		return "NaverVO [id=" + id + ", nickname=" + nickname + ", email=" + email + ", sns=" + sns + "]";
 	}
 	
-	/*삭제*/
+
 	
 }

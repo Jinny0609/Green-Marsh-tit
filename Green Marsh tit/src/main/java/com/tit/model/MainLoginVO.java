@@ -37,7 +37,7 @@ public class MainLoginVO {
 		return sns;
 	}
 	public void setSns(String sns) {
-		this.sns = "main";
+		this.sns = "basic";
 	}
 	
 	@Override

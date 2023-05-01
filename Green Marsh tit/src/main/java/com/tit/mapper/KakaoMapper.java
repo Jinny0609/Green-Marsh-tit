@@ -7,5 +7,6 @@ public interface KakaoMapper {
 	public void kakaologin(LoginVO loginVO);
 	public int checkEmail(String email);
 	public String checkSns(LoginVO loginVO);
+	public void kakaodelete(LoginVO loginVO);
 	
 }

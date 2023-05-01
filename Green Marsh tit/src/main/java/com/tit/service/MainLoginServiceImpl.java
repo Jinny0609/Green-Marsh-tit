@@ -1,5 +1,7 @@
 package com.tit.service;
 
+import java.util.ArrayList;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,6 +17,14 @@ public class MainLoginServiceImpl implements MainLoginService{
 	public void memberjoin(MainLoginVO mainloginVO) {
 	mlm.memberjoin(mainloginVO);
 	System.out.println(mainloginVO);
+	}
+	
+	public ArrayList<MainLoginVO> memberlogin(MainLoginVO mainloginVO) {
+		return mlm.memberlogin(mainloginVO);
+	}
+	
+	public void memberlogout(String email) {
+		mlm.memberlogout(email);
 	}
 
 }

@@ -15,4 +15,7 @@ public class NaverLoginServiceImpl implements NaverLoginService {
 	public void naverlogin(NaverVO naverVO) {
 		naverMapper.naverlogin(naverVO);
 	}
-}/*삭제*/
+	public void naverlogout(NaverVO naverVO){
+		naverMapper.naverlogout(naverVO);
+	}
+}
