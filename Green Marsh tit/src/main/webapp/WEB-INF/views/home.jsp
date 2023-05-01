@@ -44,20 +44,21 @@
 					<a href="#forgot">비밀번호를 잊으셨습니까?</a>
 				</div>
 			</div>
+			<form action="/MainMemberJoin" method="post">
 			<div class="sign-up-htm">
 				<div class="group">
-					<input id="user" type="text" class="input"placeholder="아이디">
+					<input id="user" type="text" class="input" name="id" placeholder="아이디">
 				</div>
 				<div class="group">
-					<input id="pass" type="password" class="input" data-type="password"placeholder="패스워드">
-				</div>
-				
-				<div class="group">
-					<input id="pass" type="password" class="input" data-type="password"placeholder="패스워드 확인">
+					<input id="pass" type="password" class="input" name="password" data-type="password"placeholder="패스워드">
 				</div>
 				
 				<div class="group">
-					<input id="pass" type="text" class="input"placeholder="이메일">
+					<input id="name" type="text" class="input" name="nickname" placeholder="닉네임">
+				</div>
+				
+				<div class="group">
+					<input id="pass" type="text" class="input" name="email" placeholder="이메일">
 				</div>
 				
 				<div class="group">
@@ -69,6 +70,7 @@
 					<label for="tab-1"><a>이미 회원이십니까?</a></label>
 				</div>
 			</div>
+			</form>
 		</div>
 	</div>
 </div>
