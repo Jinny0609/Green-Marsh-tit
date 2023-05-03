@@ -34,7 +34,7 @@ public class LoginController {
 		return "redirect:/MemberJoin";
 	}
 	
-	// 로그인
+	// 로그인 (예외처리 완)
 	@RequestMapping(value = "/MainMemberlogin", method = RequestMethod.POST)
 	public String memberlogin (MainLoginVO mainloginVO, HttpSession session) {
 		ArrayList<MainLoginVO> loginList = mainloginservice.memberlogin(mainloginVO);
