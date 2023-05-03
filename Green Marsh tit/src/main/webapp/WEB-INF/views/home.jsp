@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Login</title>
 <link href= "resources/css/LoginPage.css" rel="stylesheet" type="text/css" />
 <script src="resources/js/home.js"></script>
 </head>

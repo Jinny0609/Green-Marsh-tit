@@ -11259,6 +11259,28 @@ pre {
 
 
 /*----------------------------------------------------------- */
+.kakao{
+	margin-left:15px;
+}
+
+.naver{
+	margin-left:15px;
+}
+
+.google{
+	margin-left:15px;
+}
+
+.basic{
+	margin-left:15px;
+}
+
+
+
+
+
+
+
 .project_box{
     display: flex;
     width: 1300px;

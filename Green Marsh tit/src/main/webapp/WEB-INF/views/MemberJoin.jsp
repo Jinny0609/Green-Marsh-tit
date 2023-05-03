@@ -11,7 +11,7 @@
 <link href="resources/css/MemberJoin2.css" rel="stylesheet" type="text/css" />
 <head>
 <meta charset="UTF-8">
-<title>회원가입 성공</title>
+<title>Main Page</title>
 </head>
 <body>
 <!-- naver -->

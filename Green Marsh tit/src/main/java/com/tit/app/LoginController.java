@@ -38,14 +38,18 @@ public class LoginController {
 	@RequestMapping(value = "/MainMemberlogin", method = RequestMethod.POST)
 	public String memberlogin (MainLoginVO mainloginVO, HttpSession session) {
 		ArrayList<MainLoginVO> loginList = mainloginservice.memberlogin(mainloginVO);
-		System.out.println(loginList);
-		if(loginList.get(0).getEmail() != null && "basic".equals(loginList.get(0).getSns())) {
-			session.setAttribute("usernickname", loginList.get(0).getNickname());
-			session.setAttribute("Loginlist", loginList);
-			String snsid = loginList.get(0).getSns();
-			session.setAttribute("Snsid", snsid);
-			return "redirect:/Medical";
-		} else {
+		try {
+		    if (loginList.size() > 0 && loginList.get(0).getEmail() != null && "basic".equals(loginList.get(0).getSns())) {
+		        session.setAttribute("usernickname", loginList.get(0).getNickname());
+		        session.setAttribute("Loginlist", loginList);
+		        String snsid = loginList.get(0).getSns();
+		        session.setAttribute("Snsid", snsid);
+		        return "redirect:/Medical";
+		    } else {
+		        return "redirect:/";
+		    }
+		} catch (IndexOutOfBoundsException e) {
+		    // 예외 처리 코드 작성
 			return "redirect:/";
 		}
 	}
