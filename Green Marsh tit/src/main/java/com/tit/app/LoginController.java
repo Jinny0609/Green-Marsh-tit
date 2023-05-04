@@ -85,8 +85,7 @@ public class LoginController {
 	public String findPassword(@RequestParam("email") String email, Model model) {
 	    MainLoginVO mainLoginVO = new MainLoginVO();
 	    mainLoginVO.setEmail(email);
-	    mainLoginVO.setSns("basic");
-
+	    
 	    String password = mainmapper.checkPasswordByEmailAndSns(mainLoginVO);
 
 	    if (password != null) {

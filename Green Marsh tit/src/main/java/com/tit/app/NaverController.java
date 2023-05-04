@@ -83,7 +83,7 @@ public class NaverController {
 			e.printStackTrace();
 		}
 		System.out.println(naverVO);
-		int count = navermapper.checkEmail(naverVO.getEmail());
+		int count = navermapper.checkID(naverVO.getId());
 		if (count > 0) { // 로그인
 			// 세션에 NaverVO 객체를 저장한다.
 			session.setAttribute("naverVO", naverVO);

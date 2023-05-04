@@ -12,8 +12,8 @@
 	</insert>
 
 
-	<select id="checkEmail" parameterType="string" resultType="int">
-		SELECT COUNT(*) FROM member WHERE email=#{email}
+	<select id="checkID" parameterType="string" resultType="int">
+		SELECT COUNT(*) FROM member WHERE id=#{id}
 	</select>
 	
 	<select id="checkSns" parameterType="com.tit.model.NaverVO" resultType="string">
@@ -21,7 +21,7 @@
 	</select>
 	
 	<delete id="naverlogout">
-	delete from member where email=#{email}
+	delete from member where id=#{id}
 	</delete>
 
 </mapper>

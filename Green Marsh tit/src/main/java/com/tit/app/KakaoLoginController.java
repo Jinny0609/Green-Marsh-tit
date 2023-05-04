@@ -34,7 +34,7 @@ import com.tit.service.KakaoLogintoService;
 			LoginVO loginVO = kakaoLoginService.getUserInfo(accessToken);
 			
 			// email 값을 조회하여 이미 존재하는 경우 로그인 처리, 그렇지 않으면 회원가입 처리
-	        int count = kakaoMapper.checkEmail(loginVO.getEmail());
+	        int count = kakaoMapper.checkID(loginVO.getId());
 	        if (count > 0) {
 	            // 이미 등록된 이메일인 경우 로그인 처리
 	            // 로그인 처리 코드 작성

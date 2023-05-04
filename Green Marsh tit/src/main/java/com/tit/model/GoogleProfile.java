@@ -1,15 +1,15 @@
 package com.tit.model;
 
-public class UserProfile {
+public class GoogleProfile {
 	private String email;
 	private String nickname;
 	private String id;
 	private String sns;
 	
-	public UserProfile() {
+	public GoogleProfile() {
     }
 
-    public UserProfile(String email, String nickname, String id) {
+    public GoogleProfile(String email, String nickname, String id) {
         this.email = email;
         this.nickname = nickname;
         this.id = id;

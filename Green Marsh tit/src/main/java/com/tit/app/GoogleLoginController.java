@@ -5,18 +5,16 @@ import java.io.IOException;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.oauth2.core.OAuth2AccessToken;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-
-import com.tit.mapper.UserProfileMapper;
-import com.tit.model.UserProfile;
+import com.tit.mapper.GoogleMapper;
+import com.tit.model.GoogleProfile;
 import com.tit.service.GoogleLoginBO;
-import com.tit.service.UserProfileService;
+import com.tit.service.GoogleProfileService;
 
 @Controller
 public class GoogleLoginController {
@@ -25,10 +23,10 @@ public class GoogleLoginController {
     private GoogleLoginBO googleLoginBO;
     
     @Autowired
-    private UserProfileService userProfileService;
+    private GoogleProfileService googleProfileService;
     
     @Autowired
-    private UserProfileMapper userProfileMapper;
+    private GoogleMapper googleMapper;
     
     @GetMapping("/oauth2/google/login")
     public String login(HttpSession session) {
@@ -50,23 +48,23 @@ public class GoogleLoginController {
         String name = userProfileData[1];
         String id = userProfileData[2];
 
-        UserProfile userProfile = new UserProfile(email, name, id);
+        GoogleProfile userProfile = new GoogleProfile(email, name, id);
 //        userProfileService.addUserProfile(userProfile);
         
-        int count = userProfileService.findUserProfileByEmail(userProfile.getEmail());
+        int count = googleProfileService.findUserProfileByEmail(userProfile.getEmail());
         if(count > 0) {
         	session.setAttribute("UserProfile", userProfile);
         	session.setAttribute("oauthToken", authCode);
             session.setAttribute("googleNickname", name);
-            String snsid = userProfileMapper.checksns(email);
+            String snsid = googleMapper.checksns(email);
             session.setAttribute("Snsid", snsid);
             System.out.println(snsid);	//test
             return "redirect:/Medical";
         } else {
-        	userProfileService.addUserProfile(userProfile);
+        	googleProfileService.addUserProfile(userProfile);
             session.setAttribute("UserProfile", userProfile);
             session.setAttribute("googleNickname", name);
-            String snsid = userProfileMapper.checksns(email);
+            String snsid = googleMapper.checksns(email);
             session.setAttribute("Snsid", snsid);
             return "redirect:/MemberJoin";
         }
@@ -85,18 +83,18 @@ public class GoogleLoginController {
     @RequestMapping(value = "/oauth2/google/acount_rm", method = { RequestMethod.GET, RequestMethod.POST })
     public String revokeAccessToken(HttpSession session) throws IOException {
  
-    	String oauthToken1 = (String) session.getAttribute("oauthToken");
-    	UserProfile userProfile1 = (UserProfile) session.getAttribute("UserProfile");
+    	String oauthToken = (String) session.getAttribute("oauthToken");
+    	GoogleProfile delProfile = (GoogleProfile) session.getAttribute("UserProfile");
 
-        System.out.println(oauthToken1);
-        System.out.println(userProfile1);
+        System.out.println(oauthToken);
+        System.out.println(delProfile);
         
 //      OAuth2AccessToken oauthToken = (OAuth2AccessToken) session.getAttribute("oauthToken");
 //      UserProfile userProfile = (UserProfile) session.getAttribute("UserProfile");
 //  	OAuth2AccessToken UserProfile
         
-        userProfileService.delUserProfile(userProfile1);
-        googleLoginBO.revokeToken(oauthToken1);
+        googleProfileService.delUserProfile(delProfile);
+        googleLoginBO.revokeToken(oauthToken);
         session.invalidate();
         return "redirect:/";
     }

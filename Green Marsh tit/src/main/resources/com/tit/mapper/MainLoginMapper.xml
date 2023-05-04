@@ -8,7 +8,7 @@
 	<!-- 메인서비스 회원가입 -->
 	<insert id="memberjoin"
 		parameterType="com.tit.model.MainLoginVO">
-		insert into member
+		insert into basicmember
 		(id, email, password, nickname, sns)
 		values (#{id}, #{email}, #{password}, #{nickname}, 'basic');
 	</insert>
@@ -16,22 +16,22 @@
 	<!-- 메인서비스 로그인 -->
 	<select id="memberlogin" resultType="com.tit.model.MainLoginVO">
 		select *
-		from member
+		from basicmember
 		where email=#{email} and password=#{password}
 	</select>
 	
 	<delete id="memberlogout">
-	delete from member where email=#{email}
+	delete from basicmember where email=#{email}
 	</delete>
 	
 	<select id="checkSns" parameterType="com.tit.model.MainLoginVO" resultType="string">
-		SELECT sns FROM member WHERE email = #{email};
+		SELECT sns FROM basicmember WHERE email = #{email};
 	</select>
 
 	<select id="checkPasswordByEmailAndSns" parameterType="com.tit.model.MainLoginVO" resultType="String">
 	    SELECT password
-	    FROM member
-	    WHERE email = #{email} AND sns = #{sns}
+	    FROM basicmember
+	    WHERE email = #{email}
 	</select>
 	
 

@@ -4,7 +4,7 @@ import com.tit.model.NaverVO;
 
 public interface NaverMapper {
 	public void naverlogin(NaverVO naverVO);
-	public int checkEmail(String email);
+	public int checkID(String id);
 	public String checkSns(NaverVO naverVO);
 	public void naverlogout(NaverVO naverVO);
 }

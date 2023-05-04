@@ -23,8 +23,8 @@ $(document).ready(function() {
     $("#passwordPopup").load("passwordPopup.jsp", function() {
       $(this).dialog({
         modal: true,
-        width: 600,		// 너비
-        height: 450,	// 높이 
+        width: 600,		// 너비 
+        height: 450,	// 높이  
         buttons: {
           "확인": function() {
             $(this).dialog("close");
