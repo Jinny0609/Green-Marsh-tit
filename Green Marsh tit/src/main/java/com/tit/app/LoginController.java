@@ -6,8 +6,11 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.tit.mapper.MainLoginMapper;
 import com.tit.model.MainLoginVO;
@@ -72,4 +75,28 @@ public class LoginController {
 		return "redirect:/";
 	}
 	
+	//비밀번호 찾기
+	@RequestMapping(value = "/findpassword", method = RequestMethod.GET)
+		public String search() {
+			return "findpassword";
+		}
+	
+	@RequestMapping(value = "/findpassword", method = RequestMethod.POST)
+	public String findPassword(@RequestParam("email") String email, Model model) {
+	    MainLoginVO mainLoginVO = new MainLoginVO();
+	    mainLoginVO.setEmail(email);
+	    mainLoginVO.setSns("basic");
+
+	    String password = mainmapper.checkPasswordByEmailAndSns(mainLoginVO);
+
+	    if (password != null) {
+	        model.addAttribute("password", password);
+	        System.out.println(password);	// 출력 잘 됨
+	        model.addAttribute("viewName", "passwordPopup"); // 뷰 이름 추가
+	    } else {
+	        model.addAttribute("errorMessage", "이메일이 일치하지 않거나 SNS 계정입니다.");
+	        model.addAttribute("viewName", "error"); // 뷰 이름 추가
+	    }
+	    return "findpassword";
+	}
 }

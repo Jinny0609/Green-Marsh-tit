@@ -27,4 +27,7 @@ public class MainLoginServiceImpl implements MainLoginService{
 		mlm.memberlogout(email);
 	}
 
+	public String checkPasswordByEmailAndSns(MainLoginVO mainLoginVO) {
+		return mlm.checkPasswordByEmailAndSns(mainLoginVO);
+	}
 }

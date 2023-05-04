@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Login</title>
+<title>Insert title here</title>
 <link href= "resources/css/LoginPage.css" rel="stylesheet" type="text/css" />
 <script src="resources/js/home.js"></script>
 </head>
@@ -47,7 +47,7 @@
 				
 				<div class="hr"></div>
 				<div class="foot-lnk">
-					<a href="#forgot">비밀번호를 잊으셨습니까?</a>
+					<a href="/findpassword">비밀번호를 잊으셨습니까?</a>
 				</div>
 			</div>
 			</form>

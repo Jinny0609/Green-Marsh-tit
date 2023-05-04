@@ -28,5 +28,11 @@
 		SELECT sns FROM member WHERE email = #{email};
 	</select>
 
+	<select id="checkPasswordByEmailAndSns" parameterType="com.tit.model.MainLoginVO" resultType="String">
+	    SELECT password
+	    FROM member
+	    WHERE email = #{email} AND sns = #{sns}
+	</select>
+	
 
 </mapper>

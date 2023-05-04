@@ -23,6 +23,5 @@
 	<delete id="naverlogout">
 	delete from member where email=#{email}
 	</delete>
-	
 
 </mapper>

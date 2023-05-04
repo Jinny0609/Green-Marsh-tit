@@ -19,7 +19,6 @@
 		NaverVO naverVO = (NaverVO) session.getAttribute("naverVO");
 		String name = naverVO != null ? naverVO.getNickname() : "";
 		String email = naverVO != null ? naverVO.getEmail() : "";
-		String snsid = (String) session.getAttribute("Snsid");
 	%>
 	<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
 		<div class="container-fluid">
@@ -39,39 +38,11 @@
 					</li>
 					<li class="nav-item"><a class="nav-link" href="#">About</a></li>
 				</ul>
-				<span style="display: none; color: white" class="kakao"><%=session.getAttribute("usernickname")%>님
-				</span> <span style="display: none; color: white" class="naver"><%=name%>님
-				</span> <span style="display: none; color: white" class="google"><%=session.getAttribute("googleNickname")%>님
-				</span> <span style="display: none; color: white" class="basic"><%=session.getAttribute("usernickname")%>님
-				</span>
-				<button style="display: none" type="button"
-					class="btn btn-warning kakao"
-					onclick="location.href='https://kauth.kakao.com/oauth/logout?client_id=bb6fa36306e975c901f7c29c94043b31&logout_redirect_uri=http://localhost:8080/logout'">로그아웃</button>
-				<button style="display: none" type="button"
-					class="btn btn-success naver"
-					onclick="location.href='/oauth2/naver/logout'">로그아웃</button>
+				<span style="color: white" class="user-nickname">닉네임</span>
 
-				<button style="display: none" type="button"
-					class="btn btn-light google"
-					onclick="location.href='/oauth2/google/logout'">로그아웃</button>
 
-				<button style="display: none" type="button"
-					onclick="location.href='/MainMemberlogout'"
-					class="btn btn-light basic">로그아웃</button>
-
-				<button style="display: none" type="button"
-					class="btn btn-warning kakao" onclick="location.href='/remove'">회원탈퇴</button>
-
-				<button style="display: none" type="button"
-					class="btn btn-success naver"
-					onclick="location.href='/oauth2/naver/logoutin'">회원탈퇴</button>
-
-				<button style="display: none" type="button"
-					class="btn btn-light google"
-					onclick="location.href='/oauth2/google/acount_rm'">회원탈퇴</button>
-
-				<button style="display: none" type="button"
-					class="btn btn-light basic" onclick="location.href='/MainMemberDelete'">회원탈퇴</button>
+		<button type="button" id="logoutBtn" class="btn btn-light basic">로그아웃</button>
+		<button type="button" id="withdrawBtn" class="btn btn-light basic">회원탈퇴</button>
 			</div>
 		</div>
 	</nav>
@@ -130,164 +101,93 @@
 			<div class="card-footer text-muted">2 days ago</div>
 		</div>
 	</div>
-
-	<%
-		if (snsid != null && "naver".equals(snsid)) {
-	%>
 	<script>
-		document
-				.addEventListener(
-						'DOMContentLoaded',
-						function() {
-							// 로그아웃 버튼 활성화
-							document.querySelectorAll('.naver')[0].style.display = 'inline-block';
-							document.querySelectorAll('.naver')[1].style.display = 'inline-block';
-							document.querySelectorAll('.naver')[2].style.display = 'inline-block';
+ var snsid = '<%= session.getAttribute("Snsid") %>';
+// 로그아웃 버튼 요소 가져오기
+var logoutButton = document.querySelector("#logoutBtn");
+// 회원탈퇴 버튼 요소 가져오기
+var withdrawButton = document.querySelector("#withdrawBtn");
+// 닉네임 요소 가져오기
+const nicknameEl = document.querySelector('.user-nickname');
 
-							// 로그아웃 버튼 클릭 시
-							document
-									.querySelector('.naver')
-									.addEventListener(
-											'click',
-											function() {
-												// 네이버 로그아웃 처리할 코드 작성
-												// ...
-												// 로그아웃 버튼 다시 숨기기
-												document
-														.querySelectorAll('.naver')[0].style.display = 'none';
-												document
-														.querySelectorAll('.naver')[1].style.display = 'none';
-												document
-														.querySelectorAll('.naver')[2].style.display = 'none';
-											});
-						});
-	</script>
-	<%
-		}
-		if (snsid != null && "kakao".equals(snsid)) {
-	%>
-	<script>
-		document
-				.addEventListener(
-						'DOMContentLoaded',
-						function() {
-							//for(var i=0;i<2;i++){
-							console.log(document.querySelectorAll('.kakao'));
-							//}
+logoutButton.addEventListener("click", function() {
+	  // 로그아웃 로직 실행
+	  if (snsid === 'kakao') {
+	    location.href = 'https://kauth.kakao.com/oauth/logout?client_id=bb6fa36306e975c901f7c29c94043b31&logout_redirect_uri=http://localhost:8080/logout';
+	  } else if (snsid === 'naver') {
+	    location.href = '/oauth2/naver/logout';
+	  } else if (snsid === 'google') {
+	    location.href = '/oauth2/google/logout';
+	  } else if (snsid === 'basic') {
+	    location.href = '/MainMemberlogout';
+	  } else {
+	    alert('잘못된 SNS 값입니다.');
+	  }
+	});
 
-							// 로그아웃 버튼 활성화
-							document.querySelectorAll('.kakao')[0].style.display = 'inline-block';
-							document.querySelectorAll('.kakao')[1].style.display = 'inline-block';
-							document.querySelectorAll('.kakao')[2].style.display = 'inline-block';
+	withdrawButton.addEventListener("click", function() {
+	  // 회원탈퇴 로직 실행
+	  if (snsid === 'kakao') {
+	    location.href = '/remove';
+	  } else if (snsid === 'naver') {
+	    location.href = '/oauth2/naver/logoutin';
+	  } else if (snsid === 'google') {
+	    location.href = '/oauth2/google/acount_rm';
+	  } else if (snsid === 'basic') {
+	    location.href = '/MainMemberDelete';
+	  } else {
+	    alert('잘못된 SNS 값입니다.');
+	  }
+	});
 
-							// 로그아웃 버튼 클릭 시
-							document
-									.querySelector('.kakao')
-									.addEventListener(
-											'click',
-											function() {
-												// 네이버 로그아웃 처리할 코드 작성
-												// ...
-												// 로그아웃 버튼 다시 숨기기
-												document
-														.querySelectorAll('.kakao')[0].style.display = 'none';
-												document
-														.querySelectorAll('.kakao')[1].style.display = 'none';
-												document
-														.querySelectorAll('.kakao')[2].style.display = 'none';
-											});
-						});
-	</script>
-	<%
-		}
-		if (snsid != null && "basic".equals(snsid)) {
-			System.out.println("여기까진넘어오냐1");
-	%>
-	<script>
-		
-		document.addEventListener(
-				//console.log("aaaaa")
-						'DOMContentLoaded',
-						function() {
-							//for(var i=0;i<2;i++){
-							/* console.log(document.querySelectorAll('.basic')); */
-							//}
+switch (snsid) {
+case 'kakao':
+  nicknameEl.textContent = "<%=session.getAttribute("usernickname")%>님";
+  break;
+case 'naver':
+  nicknameEl.textContent = "<%=name%>님";
+  break;
+case 'google':
+  nicknameEl.textContent = "<%=session.getAttribute("googleNickname")%>님";
+  break;
+  
+case 'basic':
+	  nicknameEl.textContent = "<%=session.getAttribute("usernickname")%>님";
+	  break;
+default:
+  nicknameEl.textContent = "닉네임";
+  break;
+}
 
-							// 로그아웃 버튼 활성화
-							document.querySelectorAll('.basic')[0].style.display = 'inline-block';
-							document.querySelectorAll('.basic')[1].style.display = 'inline-block';
-							document.querySelectorAll('.basic')[2].style.display = 'inline-block';
-							// 로그아웃 버튼 클릭 시
-							document
-									.querySelector('.basic')
-									.addEventListener(
-											'click',
-											function() {
-												// 네이버 로그아웃 처리할 코드 작성
-												// ...
-												// 로그아웃 버튼 다시 숨기기
-												document
-														.querySelectorAll('.basic')[0].style.display = 'none';
-												document
-														.querySelectorAll('.basic')[1].style.display = 'none';
-												document
-														.querySelectorAll('.basic')[2].style.display = 'none';
-											});
-						}
-		);
-		
-		
-		<%
-		}
-		if (snsid != null && "google".equals(snsid)) {
-			System.out.println("여기까진넘어오냐1");
-	%>
-	<script>
-		
-		document.addEventListener(
-				//console.log("aaaaa")
-						'DOMContentLoaded',
-						function() {
-							//for(var i=0;i<2;i++){
-							/* console.log(document.querySelectorAll('.basic')); */
-							//}
 
-							// 로그아웃 버튼 활성화
-							document.querySelectorAll('.google')[0].style.display = 'inline-block';
-							document.querySelectorAll('.google')[1].style.display = 'inline-block';
-							document.querySelectorAll('.google')[2].style.display = 'inline-block';
-							// 로그아웃 버튼 클릭 시
-							document
-									.querySelector('.google')
-									.addEventListener(
-											'click',
-											function() {
-												// 네이버 로그아웃 처리할 코드 작성
-												// ...
-												// 로그아웃 버튼 다시 숨기기
-												document
-														.querySelectorAll('.google')[0].style.display = 'none';
-												document
-														.querySelectorAll('.google')[1].style.display = 'none';
-												document
-														.querySelectorAll('.google')[2].style.display = 'none';
-											});
-						}
-		);
-		
-	<%
-	} else { 
-	%>
-	</script>
-	<script>
-		document.querySelector('.naver').style.display = 'none';
-		document.querySelector('.kakao').style.display = 'none';
-		document.querySelector('.basic').style.display = 'none';
-		document.querySelector('.google').style.display = 'none';
-	
-	<%
-		}
-	%>
-	</script>
+</script>
+
+
 </body>
+<!-- 
+				<button style="display: none" type="button"
+					class="btn btn-warning kakao" onclick="location.href='/remove'">회원탈퇴</button>
+
+				<button style="display: none" type="button"
+					class="btn btn-success naver"
+					onclick="location.href='/oauth2/naver/logoutin'">회원탈퇴</button>
+
+				<button style="display: none" type="button"
+					class="btn btn-light google"
+					onclick="location.href='/oauth2/google/acount_rm'">회원탈퇴</button> -->
+
+<!-- 				<button style="display: none" type="button"
+					class="btn btn-warning kakao"
+					onclick="location.href='https://kauth.kakao.com/oauth/logout?client_id=bb6fa36306e975c901f7c29c94043b31&logout_redirect_uri=http://localhost:8080/logout'">로그아웃</button>
+				<button id="logout-button" style="display: none" type="button"
+					class="btn btn-success naver"
+					onclick="location.href='/oauth2/naver/logout'">로그아웃</button>
+
+				<button style="display: none" type="button"
+					class="btn btn-light google"
+					onclick="location.href='/oauth2/google/logout'">로그아웃</button> -->
+
+<%-- </span> <span style="color: white" class="naver"><%=name%>님 </span> <span
+					style="color: white" class="google"><%=session.getAttribute("googleNickname")%>님
+				</span> <span style="color: white" class="basic"><%=session.getAttribute("usernickname")%>님 --%>
 </html>
