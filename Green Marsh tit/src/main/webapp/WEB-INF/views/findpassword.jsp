@@ -56,7 +56,7 @@ $(document).ready(function() {
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
   <div class="container-fluid">
-   		 <a href="/MemberJoin">
+   		 <a href="#">
   			<img src="resources/img/logo.png" class="logo" alt="My Logo">
 		</a>
   </div>
@@ -75,6 +75,7 @@ $(document).ready(function() {
 		    </div>
 		    <div class="boxy2">
 		        <button type="submit" class="btn-hover color-8">비밀번호찾기</button>
+		        <button type="button" class="btn-hover color-8" onclick="location.href='/'">뒤로가기</button>
 		    </div>
 		</form>
 	</div>

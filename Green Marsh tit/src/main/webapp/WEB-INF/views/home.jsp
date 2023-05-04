@@ -37,7 +37,7 @@
 <!-- 				<a href="https://accounts.google.com/o/oauth2/auth?client_id=22641404320-61a62g9r725i4erqeqrnlhetivm8s95m.apps.googleusercontent.com&redirect_uri=http://localhost:8080/login/oauth2/code/google&scope=https://www.googleapis.com/auth/userinfo.email&response_type=code"> -->
 <!--  				<img src="resources/img/google.png" class="social-icon"></a> -->
 					<c:url value="/oauth2/google/login" var="googleOAuthUrl" />
-					<a href="${googleOAuthUrl}"><img src="resources/img/google.png" class="social-icon"></a>
+					<a href="${googleOAuthUrl}"><img src="resources/img/Google.png" class="social-icon" id="glegle"></a>
 				    <a href="https://kauth.kakao.com/oauth/authorize?client_id=bb6fa36306e975c901f7c29c94043b31&redirect_uri=http://localhost:8080/oauth/kakao&response_type=code"><img src= "resources/img/kakao.png" class="social-icon"></a>
 				</div>
 				
