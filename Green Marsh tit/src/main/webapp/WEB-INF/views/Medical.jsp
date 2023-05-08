@@ -49,10 +49,9 @@
 
 	<div class="project_box">
 		<div class="card mb-3" id="project_item2">
-			<h3 class="card-header">Card header</h3>
+			<h3 class="card-header">기준정보 관리 기능 구현</h3>
 			<div class="card-body">
-				<h5 class="card-title">Special title treatment</h5>
-				<h6 class="card-subtitle text-muted">Support card subtitle</h6>
+				<h5 class="card-title">SNS 서비스 연동 회원가입</h5>
 			</div>
 			<svg xmlns="http://www.w3.org/2000/svg"
 				class="d-block user-select-none" width="100%" height="200"
@@ -60,26 +59,21 @@
 				preserveAspectRatio="xMidYMid slice" viewBox="0 0 318 180"
 				style="font-size: 1.125rem; text-anchor: middle">
           <rect width="100%" height="100%" fill="#868e96"></rect>
+          <text x="50%" y="50%" fill="#dee2e6" dy=".3em"></text>
           <text x="50%" y="50%" fill="#dee2e6" dy=".3em">Image cap</text>
         </svg>
-			<div class="card-body">
-				<p class="card-text">Some quick example text to build on the
-					card title and make up the bulk of the card's content.</p>
-			</div>
+			
 
 			<div class="card-body">
-				<a href="#" class="card-link">Card link</a> <a href="#"
+				<a href="#" class="card-link">페이지로 이동</a> <a href="#"
 					class="card-link">Another link</a>
 			</div>
-			<div class="card-footer text-muted">2 days ago</div>
-
-
+			<div class="card-footer text-muted">2023.04.17 ~ 2023.05.11</div>
 		</div>
 		<div class="card mb-3" id="project_item">
-			<h3 class="card-header">Card header</h3>
+			<h3 class="card-header">IoT기반정보 대시보드 구현</h3>
 			<div class="card-body">
-				<h5 class="card-title">Special title treatment</h5>
-				<h6 class="card-subtitle text-muted">Support card subtitle</h6>
+				<h5 class="card-title">팀 주제</h5>
 			</div>
 			<svg xmlns="http://www.w3.org/2000/svg"
 				class="d-block user-select-none" width="100%" height="200"
@@ -90,15 +84,29 @@
           <text x="50%" y="50%" fill="#dee2e6" dy=".3em">Image cap</text>
         </svg>
 			<div class="card-body">
-				<p class="card-text">Some quick example text to build on the
-					card title and make up the bulk of the card's content.</p>
-			</div>
-
-			<div class="card-body">
-				<a href="#" class="card-link">Card link</a> <a href="#"
+				<a href="#" class="card-link">페이지로 이동</a> <a href="#"
 					class="card-link">Another link</a>
 			</div>
-			<div class="card-footer text-muted">2 days ago</div>
+			<div class="card-footer text-muted">2023.05.12 ~ 2023.05.24</div>
+		</div>
+		<div class="card mb-3" id="project_item">
+			<h3 class="card-header">병원솔루션 SCM관리프로세스</h3>
+			<div class="card-body">
+				<h5 class="card-title">팀 주제</h5>
+			</div>
+			<svg xmlns="http://www.w3.org/2000/svg"
+				class="d-block user-select-none" width="100%" height="200"
+				aria-label="Placeholder: Image cap" focusable="false" role="img"
+				preserveAspectRatio="xMidYMid slice" viewBox="0 0 318 180"
+				style="font-size: 1.125rem; text-anchor: middle">
+          <rect width="100%" height="100%" fill="#868e96"></rect>
+          <text x="50%" y="50%" fill="#dee2e6" dy=".3em">Image cap</text>
+        </svg>
+			<div class="card-body">
+				<a href="#" class="card-link">페이지로 이동</a> <a href="#"
+					class="card-link">Another link</a>
+			</div>
+			<div class="card-footer text-muted">2023.05.25 ~ 2023.06.30</div>
 		</div>
 	</div>
 	<script>
@@ -159,35 +167,6 @@ default:
   break;
 }
 
-
 </script>
-
-
 </body>
-<!-- 
-				<button style="display: none" type="button"
-					class="btn btn-warning kakao" onclick="location.href='/remove'">회원탈퇴</button>
-
-				<button style="display: none" type="button"
-					class="btn btn-success naver"
-					onclick="location.href='/oauth2/naver/logoutin'">회원탈퇴</button>
-
-				<button style="display: none" type="button"
-					class="btn btn-light google"
-					onclick="location.href='/oauth2/google/acount_rm'">회원탈퇴</button> -->
-
-<!-- 				<button style="display: none" type="button"
-					class="btn btn-warning kakao"
-					onclick="location.href='https://kauth.kakao.com/oauth/logout?client_id=bb6fa36306e975c901f7c29c94043b31&logout_redirect_uri=http://localhost:8080/logout'">로그아웃</button>
-				<button id="logout-button" style="display: none" type="button"
-					class="btn btn-success naver"
-					onclick="location.href='/oauth2/naver/logout'">로그아웃</button>
-
-				<button style="display: none" type="button"
-					class="btn btn-light google"
-					onclick="location.href='/oauth2/google/logout'">로그아웃</button> -->
-
-<%-- </span> <span style="color: white" class="naver"><%=name%>님 </span> <span
-					style="color: white" class="google"><%=session.getAttribute("googleNickname")%>님
-				</span> <span style="color: white" class="basic"><%=session.getAttribute("usernickname")%>님 --%>
 </html>
