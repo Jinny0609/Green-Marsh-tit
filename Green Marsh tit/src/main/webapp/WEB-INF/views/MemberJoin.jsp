@@ -57,7 +57,7 @@ case 'google':
   break;
 default:
   nicknameEl.textContent = "<%=session.getAttribute("usernickname")%>님 환영합니다.";
-  break;
+  break; 
 }
 </script>
 </body>
