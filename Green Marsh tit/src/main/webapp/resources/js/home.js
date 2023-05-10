@@ -26,18 +26,31 @@ function validateForm() {
 	var pw = document.getElementById("pw").value;
 	var name = document.getElementById("name").value;
 
-	  if (email == "" || exptext.test(email) == false) {
-	    alert("이메일형식이 올바르지 않습니다.");
+	if (email === "") {
+	    alert("이메일을 입력해주세요.");
 	    return false;
-	  }
-
-	  if (pw == "" || expnum.test(pw) == false) {
+	} else if (!exptext.test(email)) {
+	    alert("이메일 형식이 올바르지 않습니다.");
+	    return false;
+	}
+	
+	  if (pw === "") {
 	    alert("패스워드를 입력해주세요.");
 	    return false;
 	  }
-
-	  if (name == "" || expname.test(name) == false) {
+	  
+	  if(!expnum.test(pw)){
+		  alert("적어도 하나의 대문자, 소문자, 숫자, 특수문자 4자 이상.");
+		  return false;
+	  }
+	  
+	  if (name === "") {
 	    alert("닉네임을 입력해주세요.");
+	    return false;
+	  }
+	  
+	  if (!expname.test(name)) {
+	    alert("닉네임을 2글자 이상 12이하로 입력해주세요.");
 	    return false;
 	  }
 

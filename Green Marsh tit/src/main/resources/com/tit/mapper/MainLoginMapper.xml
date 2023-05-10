@@ -9,8 +9,8 @@
 	<insert id="memberjoin"
 		parameterType="com.tit.model.MainLoginVO">
 		insert into basicmember
-		(id, email, password, nickname, sns)
-		values (#{id}, #{email}, #{password}, #{nickname}, 'basic');
+		(email, password, nickname, sns)
+		values (#{email}, #{password}, #{nickname}, 'basic');
 	</insert>
 
 	<!-- 메인서비스 로그인 -->

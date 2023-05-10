@@ -24,7 +24,7 @@ public class GoogleLoginBO {
 	/* 인증 요청문을 구성하는 파라미터 */
 	// client_id: 애플리케이션 등록 후 발급받은 클라이언트 아이디
 	// client_secret : 애플리케이션 등록 후 발급받은 클라이언트 시크릿
-	// redirect_uri: 네이버 로그인 인증의 결과를 전달받을 콜백 URL(URL 인코딩). 애플리케이션을 등록할 때 Callback URL에 설정한 정보입니다.
+	// redirect_uri: 로그인 인증의 결과를 전달받을 콜백 URL(URL 인코딩). 애플리케이션을 등록할 때 Callback URL에 설정한 정보입니다.
 	// SCOPE = 요청할 권한의 범위를 지정하는 값입니다. 구글 API에 따라 다르게 설정할 수 있습니다.
 	
 	private static final HttpTransport HTTP_TRANSPORT = new NetHttpTransport();

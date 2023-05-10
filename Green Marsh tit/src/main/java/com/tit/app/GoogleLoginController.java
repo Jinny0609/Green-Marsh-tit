@@ -19,6 +19,8 @@ import com.tit.service.GoogleProfileService;
 @Controller
 public class GoogleLoginController {
 
+	// GoogleLoginBO, GoogleProfileService, GoogleMapper @Autowired를 이용해 의존성 주입
+	// Google OAuth2 인증, Google 프로필 정보를 DB에 CRUD 작업, Google 프로필 정보를 DB에 저장하는 데 사용
     @Autowired
     private GoogleLoginBO googleLoginBO;
     
@@ -28,19 +30,18 @@ public class GoogleLoginController {
     @Autowired
     private GoogleMapper googleMapper;
     
+    // GET /oauth2/google/login 요청이 들어오면, GoogleLoginBO를 이용하여 구글 로그인 URL을 생성
+    // 이를 포함한 redirect 응답을 보냄 이 과정을 통해 사용자는 구글 계정으로 로그인
     @GetMapping("/oauth2/google/login")
     public String login(HttpSession session) {
         String googleAuthorizationUrl = googleLoginBO.getAuthorizationUrl(session);
         return "redirect:" + googleAuthorizationUrl;
-    }
-
-    @GetMapping("/login/oauth2/code/google")
-    public String afterLogin() {
-//        return "/oauth2/google/login";	
-        return "googletest";	//기존 리턴
-    }	//기존 있던 부분
+    } 
     
     // REDIRECT_URI /oauth2/google/callback
+    // GET /oauth2/google/callback 요청이 들어오면, GoogleLoginBO를 이용하여 사용자의 access token을 받아
+    // getUserProfile 메소드를 이용하여 access token으로부터 사용자의 이메일, 이름, ID 등의 정보를 받아옵니다. 
+    // 받아온 정보를 바탕으로 GoogleProfile 객체를 생성
     @RequestMapping("/oauth2/google/callback")	// 이부분 유효한지 확인
     public String callback(@RequestParam("code") String authCode, HttpSession session) throws IOException {
         String[] userProfileData = googleLoginBO.getUserProfile(authCode);
@@ -49,7 +50,6 @@ public class GoogleLoginController {
         String id = userProfileData[2];
 
         GoogleProfile userProfile = new GoogleProfile(email, name, id);
-//        userProfileService.addUserProfile(userProfile);
         
         int count = googleProfileService.findUserProfileByEmail(userProfile.getEmail());
         if(count > 0) {
@@ -68,11 +68,11 @@ public class GoogleLoginController {
             session.setAttribute("Snsid", snsid);
             return "redirect:/MemberJoin";
         }
-        
-        /*return "redirect:/Medical";*/
     }
     
     // 로그아웃
+    // /oauth2/google/logout 요청이 들어오면, 세션을 초기화하고, 
+    // 홈 화면으로 redirect 합니다 이 과정을 통해 사용자는 로그아웃 할 수 있다.
     @RequestMapping(value = "/oauth2/google/logout", method = { RequestMethod.GET, RequestMethod.POST })
 	public String logout(HttpSession session) throws IOException {
 		session.invalidate();
@@ -80,6 +80,10 @@ public class GoogleLoginController {
 	}
     
     // 회원 탈퇴
+    // GET /oauth2/google/account_rm 요청이 들어오면 
+    // GoogleProfileService의 delUserProfile 메소드를 호출하여 DB에서 해당 사용자 정보를 삭제
+    // GoogleLoginBO의 revokeToken 메소드를 호출하여 access token을 폐기합니다. 세션을 초기화하고, 홈 화면으로 redirect 한다.
+    // 이 과정을 통해 사용자는 회원 탈퇴를 할 수 있다.
     @RequestMapping(value = "/oauth2/google/acount_rm", method = { RequestMethod.GET, RequestMethod.POST })
     public String revokeAccessToken(HttpSession session) throws IOException {
  
@@ -88,10 +92,6 @@ public class GoogleLoginController {
 
         System.out.println(oauthToken);
         System.out.println(delProfile);
-        
-//      OAuth2AccessToken oauthToken = (OAuth2AccessToken) session.getAttribute("oauthToken");
-//      UserProfile userProfile = (UserProfile) session.getAttribute("UserProfile");
-//  	OAuth2AccessToken UserProfile
         
         googleProfileService.delUserProfile(delProfile);
         googleLoginBO.revokeToken(oauthToken);
